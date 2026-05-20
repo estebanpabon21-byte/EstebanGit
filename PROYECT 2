@@ -1,16 +1,60 @@
-Miercoles = 12000
-Viernes = 16000
-Intervalo_Tiempo = 15 
-Aumento = 340
-Dias_transcurridos = int(input("\nDigite la cantidad de dias transcurridos:"))
-periodos_acumulados = Dias_transcurridos / Intervalo_Tiempo
-aumento_total = periodos_acumulados * Aumento
-Valor_final1 = Miercoles + aumento_total 
-Valor_final2 = Viernes + aumento_total 
-Total_Dias = Valor_final1 + Valor_final2
-print(f"\n--- Resultados ---")
-print(f"Periodos de aumento aplicados: {periodos_acumulados: .2f}")
-print(f"Valor final Miércoles: ${Valor_final1: .2f}")
-print(f"Valor final Viernes: ${Valor_final2: .2f}")
-print(f"Valor por los 2 dias:${Total_Dias: .2f}")
-print("Gracias por adquirir el servicio")
+import tkinter as tk
+
+
+# PASO 1: LA FUNCIÓN DE CÁLCULO (Va arriba del todo)
+
+def calcular():
+    # 1. Leemos los días que el usuario escribió en la caja de texto
+    dias_texto = entrada_dias.get()
+    Dias_transcurridos = int(dias_texto)
+    
+    # 2. Tus variables matemáticas exactas de la primera foto
+    Miercoles = 12000
+    Viernes = 16000
+    Periodo_Tiempo = 15
+    Aumento = 340
+    
+    # 3. Tus operaciones matemáticas
+    periodos_acumulados = Dias_transcurridos / Periodo_Tiempo
+    aumento_total = periodos_acumulados * Aumento
+    Valor_final1 = Miercoles + aumento_total
+    Valor_final2 = Viernes + aumento_total
+    Total_Dias = Valor_final1 + Valor_final2
+    
+    # 4. Mostramos el resultado final cambiando el texto de la etiqueta en la ventana
+    resultado.config(text=f"Total por los 2 días: $ {Total_Dias:.2f}\n"
+                     f"Periodos de aumento aplicados: {periodos_acumulados: .2f}\n"
+                     f"Valor final Miércoles: ${Valor_final1: .2f}\n"
+                     f"Valor final Viernes: ${Valor_final2: .2f}")
+
+
+
+# PASO 2: EL DISEÑO DE LA VENTANA (Va abajo, pegado al borde izquierdo)
+
+ventana = tk.Tk()
+ventana.title("SERVICIO UBER")
+ventana.geometry("350x400")  # Le di más espacio para que se vea cómodo
+
+# Título principal
+etiqueta = tk.Label(ventana, text="SERVICIO DE MOTO", font=("Arial", 14, "bold"))
+etiqueta.pack(pady=20)
+
+# Texto de instrucción
+instruccion = tk.Label(ventana, text="Digite la cantidad de dias transcurridos:")
+instruccion.pack(pady=10)
+
+# Caja blanca para escribir los números
+entrada_dias = tk.Entry(ventana, font=("Arial", 12))
+entrada_dias.pack(pady=10)
+
+# Botón verde para calcular (Llama a la función de arriba con command=calcular)
+boton_calcular = tk.Button(ventana, text="Calcular", command=calcular, bg="#074109", fg="white", font=("Arial", 11, "bold"))
+boton_calcular.pack(pady=15)
+
+# Etiqueta azul donde se va a pintar el resultado en la ventana 
+resultado = tk.Label(ventana, text="", font=("Arial", 12, "bold"), fg="blue")
+resultado.pack(pady=10)
+
+# PASO 3: EL CIERRE 
+
+ventana.mainloop()
