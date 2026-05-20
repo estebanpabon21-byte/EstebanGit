@@ -1,0 +1,16 @@
+Miercoles = 12000
+Viernes = 16000
+Intervalo_Tiempo = 15 
+Aumento = 340
+Dias_transcurridos = int(input("\nDigite la cantidad de dias transcurridos:"))
+periodos_acumulados = Dias_transcurridos / Intervalo_Tiempo
+aumento_total = periodos_acumulados * Aumento
+Valor_final1 = Miercoles + aumento_total 
+Valor_final2 = Viernes + aumento_total 
+Total_Dias = Valor_final1 + Valor_final2
+print(f"\n--- Resultados ---")
+print(f"Periodos de aumento aplicados: {periodos_acumulados: .2f}")
+print(f"Valor final Miércoles: ${Valor_final1: .2f}")
+print(f"Valor final Viernes: ${Valor_final2: .2f}")
+print(f"Valor por los 2 dias:${Total_Dias: .2f}")
+print("Gracias por adquirir el servicio")
